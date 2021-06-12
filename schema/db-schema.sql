@@ -5,10 +5,6 @@ CREATE TABLE `calls` (
   `endDate` datetime NOT NULL,
   `location` varchar(60) NOT NULL,
   `details` varchar(150) DEFAULT NULL,
-  `call_type_id` mediumint(9) NOT NULL
-);
-
-CREATE TABLE `call_type` (
   `call_type_id` mediumint(9) NOT NULL,
   `type` varchar(40) DEFAULT NULL
 );
@@ -16,7 +12,8 @@ CREATE TABLE `call_type` (
 CREATE TABLE `equipment` (
   `equipment_id` mediumint(9) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `price` float DEFAULT NULL
+  `price` float DEFAULT NULL,
+  `serial_number` varchar(200) NOT NULL
 ) ;
 
 CREATE TABLE `fire_trucks` (
@@ -51,16 +48,6 @@ CREATE TABLE `fire_truck_services` (
   `description` varchar(150) NOT NULL
 );
 
-CREATE TABLE `management` (
-  `staff_member_id` mediumint(9) NOT NULL,
-  `management_function_id` mediumint(9) NOT NULL
-);
-
-CREATE TABLE `management_functions` (
-  `management_function_id` mediumint(9) NOT NULL,
-  `name` varchar(30) NOT NULL
-);
-
 CREATE TABLE `staff_members` (
   `staff_member_id` mediumint(9) NOT NULL,
   `firstname` varchar(30) NOT NULL,
@@ -72,6 +59,7 @@ CREATE TABLE `staff_members` (
   `periodic_examinations_date` date DEFAULT NULL,
   `is_driver` tinyint(1) NOT NULL DEFAULT 0,
   `birthdate` date NOT NULL,
+  `blood_type` varchar(5) not null,
   `email` varchar(60) NOT NULL,
   `phone_number` varchar(20) DEFAULT NULL
 );
@@ -98,9 +86,6 @@ ALTER TABLE `calls`
   ADD PRIMARY KEY (`call_id`),
   ADD KEY `calls_ibfk_1` (`call_type_id`);
 
-ALTER TABLE `call_type`
-  ADD PRIMARY KEY (`call_type_id`);
-
 ALTER TABLE `equipment`
   ADD PRIMARY KEY (`equipment_id`);
 
@@ -119,13 +104,6 @@ ALTER TABLE `fire_truck_parameters`
 ALTER TABLE `fire_truck_services`
   ADD PRIMARY KEY (`fire_truck_services_id`),
   ADD KEY `fire_truck_services_fire_truck_fk` (`fire_truck_id`);
-
-ALTER TABLE `management`
-  ADD KEY `management_function_fk` (`management_function_id`),
-  ADD KEY `management_staff_members_fk` (`staff_member_id`);
-
-ALTER TABLE `management_functions`
-  ADD PRIMARY KEY (`management_function_id`);
 
 ALTER TABLE `staff_members`
   ADD PRIMARY KEY (`staff_member_id`);
@@ -146,9 +124,6 @@ ALTER TABLE `training_types`
 ALTER TABLE `calls`
   MODIFY `call_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
-ALTER TABLE `call_type`
-  MODIFY `call_type_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 ALTER TABLE `equipment`
   MODIFY `equipment_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
@@ -161,9 +136,6 @@ ALTER TABLE `fire_truck_parameters`
 ALTER TABLE `fire_truck_services`
   MODIFY `fire_truck_services_id` mediumint(9) NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE `management_functions`
-  MODIFY `management_function_id` mediumint(9) NOT NULL AUTO_INCREMENT;
-
 ALTER TABLE `staff_members`
   MODIFY `staff_member_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
@@ -174,9 +146,6 @@ ALTER TABLE `trainings`
 ALTER TABLE `training_types`
   MODIFY `training_type_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
-ALTER TABLE `calls`
-  ADD CONSTRAINT `calls_ibfk_1` FOREIGN KEY (`call_type_id`) REFERENCES `call_type` (`call_type_id`);
-
 ALTER TABLE `fire_trucks_in_action`
   ADD CONSTRAINT `fire_trucks_in_action_calls_fk` FOREIGN KEY (`call_id`) REFERENCES `calls` (`call_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fire_trucks_in_action_fire_trucks_fk` FOREIGN KEY (`fire_truck_id`) REFERENCES `fire_trucks` (`fire_truck_id`) ON DELETE CASCADE ON UPDATE CASCADE;
@@ -186,10 +155,6 @@ ALTER TABLE `fire_truck_parameters`
 
 ALTER TABLE `fire_truck_services`
   ADD CONSTRAINT `fire_truck_services_fire_trucks_fk` FOREIGN KEY (`fire_truck_id`) REFERENCES `fire_trucks` (`fire_truck_id`);
-
-ALTER TABLE `management`
-  ADD CONSTRAINT `management_management_functions_fk` FOREIGN KEY (`management_function_id`) REFERENCES `management_functions` (`management_function_id`),
-  ADD CONSTRAINT `management_staff_members_fk` FOREIGN KEY (`staff_member_id`) REFERENCES `staff_members` (`staff_member_id`);
 
 ALTER TABLE `staff_members_in_action`
   ADD CONSTRAINT `staff_members_in_action_calls_fk` FOREIGN KEY (`call_id`) REFERENCES `calls` (`call_id`) ON DELETE CASCADE ON UPDATE CASCADE,
