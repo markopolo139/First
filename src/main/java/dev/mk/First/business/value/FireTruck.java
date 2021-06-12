@@ -128,6 +128,7 @@ public class FireTruck {
         }
 
         public FireTruck build() {
+            validate();
             return mFireTruck;
         }
 
