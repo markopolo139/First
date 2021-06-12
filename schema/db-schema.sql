@@ -6,27 +6,27 @@ CREATE TABLE `calls` (
   `location` varchar(60) NOT NULL,
   `details` varchar(150) DEFAULT NULL,
   `call_type_id` mediumint(9) NOT NULL,
-  `type` varchar(40) DEFAULT NULL
+  `type` varchar(40) NOT NULL
 );
 
 CREATE TABLE `equipment` (
   `equipment_id` mediumint(9) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `price` float DEFAULT NULL,
+  `price` float NOT NULL,
   `serial_number` varchar(200) NOT NULL
 ) ;
 
 CREATE TABLE `fire_trucks` (
   `fire_truck_id` mediumint(9) NOT NULL,
   `name` varchar(30) NOT NULL,
-  `price` float DEFAULT NULL,
+  `price` float NOT NULL,
   `vin` varchar(17) NOT NULL,
-  `production_year` int(11) DEFAULT NULL,
-  `operational_numbers` varchar(6) DEFAULT NULL,
+  `production_year` int(11) NOT NULL,
+  `operational_numbers` varchar(6) NOT NULL,
   `type` varchar(20) NOT NULL,
   `horsepower` int(11) NOT NULL,
-  `number_of_seats` int(11) DEFAULT NULL,
-  `mileage` int(11) DEFAULT NULL
+  `number_of_seats` int(11) NOT NULL,
+  `mileage` int(11) NOT NULL
 );
 
 CREATE TABLE `fire_trucks_in_action` (
@@ -44,7 +44,7 @@ CREATE TABLE `fire_truck_services` (
   `fire_truck_services_id` mediumint(9) NOT NULL,
   `fire_truck_id` mediumint(9) NOT NULL,
   `service_date` date NOT NULL,
-  `cost` float DEFAULT NULL,
+  `cost` float NOT NULL,
   `description` varchar(150) NOT NULL
 );
 
@@ -56,7 +56,7 @@ CREATE TABLE `staff_members` (
   `pesel` varchar(11) NOT NULL,
   `address` varchar(40) NOT NULL,
   `city` varchar(30) NOT NULL,
-  `periodic_examinations_date` date DEFAULT NULL,
+  `periodic_examinations_expiry_date` date DEFAULT NULL,
   `is_driver` tinyint(1) NOT NULL DEFAULT 0,
   `birthdate` date NOT NULL,
   `blood_type` varchar(5) not null,
@@ -79,7 +79,7 @@ CREATE TABLE `trainings` (
 
 CREATE TABLE `training_types` (
   `training_type_id` mediumint(9) NOT NULL,
-  `name` varchar(100) DEFAULT NULL
+  `name` varchar(100) NOT NULL
 );
 
 ALTER TABLE `calls`
