@@ -25,7 +25,7 @@ public class TrainingEntity {
     public TrainingType trainingType;
 
     @OneToOne
-    @Column(name = "staff_member_id")
+    @JoinColumn(name = "staff_member_id")
     public StaffMemberEntity staffMemberEntity;
 
     public TrainingEntity() {

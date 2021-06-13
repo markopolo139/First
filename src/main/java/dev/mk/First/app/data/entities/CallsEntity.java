@@ -27,7 +27,6 @@ public class CallsEntity {
     @Column(name = "details")
     public String details;
 
-    @OneToOne
     @Column(name = "type")
     public CallType callType;
 
