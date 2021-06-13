@@ -72,27 +72,22 @@ CREATE TABLE `trainings` (
   `training_id` mediumint(9) NOT NULL,
   `training_date` date NOT NULL,
   `expiration_date` date DEFAULT NULL,
-  `training_type_id` mediumint(9) NOT NULL,
+  `training_type` ENUM('BASIC',
+                              'QUALIFIED_FIRST_AID',
+                              'TECHNICAL_RESCUE',
+                              'ANTI_FLOOD_AND_WATER_RESCUE',
+                              'MAINTENANCE_DRIVER_RESCUE_EQUIPMENT',
+                              'LEADERS',
+                              'HEADERS',
+                              'COMMUNE_COMMANDER',
+                              'LIFT',
+                              'CHEM_ECO_RESCUE',
+                              'SEARCH_AND_RESCUE',
+                              'HIGH_ALTITUDE_RESCUE',
+                              'LADDER',
+                              'HELMSMAN',
+                              'SAWMAN') NOT NULL,
   `staff_member_id` mediumint(9) NOT NULL
-);
-
-CREATE TABLE `training_types` (
-  `training_type_id` mediumint(9) NOT NULL,
-  `name` ENUM('BASIC',
-            'QUALIFIED_FIRST_AID',
-            'TECHNICAL_RESCUE',
-            'ANTI_FLOOD_AND_WATER_RESCUE',
-            'MAINTENANCE_DRIVER_RESCUE_EQUIPMENT',
-            'LEADERS',
-            'HEADERS',
-            'COMMUNE_COMMANDER',
-            'LIFT',
-            'CHEM_ECO_RESCUE',
-            'SEARCH_AND_RESCUE',
-            'HIGH_ALTITUDE_RESCUE',
-            'LADDER',
-            'HELMSMAN',
-            'SAWMAN') NOT NULL
 );
 
 ALTER TABLE `calls`
@@ -127,11 +122,7 @@ ALTER TABLE `staff_members_in_action`
 
 ALTER TABLE `trainings`
   ADD PRIMARY KEY (`training_id`),
-  ADD KEY `trainings_staff_member_id_index` (`staff_member_id`),
-  ADD KEY `trainings_training_type_fk` (`training_type_id`);
-
-ALTER TABLE `training_types`
-  ADD PRIMARY KEY (`training_type_id`);
+  ADD KEY `trainings_staff_member_id_index` (`staff_member_id`);
 
 ALTER TABLE `calls`
   MODIFY `call_id` mediumint(9) NOT NULL AUTO_INCREMENT;
@@ -151,12 +142,8 @@ ALTER TABLE `fire_truck_services`
 ALTER TABLE `staff_members`
   MODIFY `staff_member_id` mediumint(9) NOT NULL AUTO_INCREMENT;
 
-
 ALTER TABLE `trainings`
   MODIFY `training_id` mediumint(9) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `training_types`
-  MODIFY `training_type_id` mediumint(9) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `fire_trucks_in_action`
   ADD CONSTRAINT `fire_trucks_in_action_calls_fk` FOREIGN KEY (`call_id`) REFERENCES `calls` (`call_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -173,5 +160,4 @@ ALTER TABLE `staff_members_in_action`
   ADD CONSTRAINT `staff_members_in_action_staff_members_fk` FOREIGN KEY (`staff_member_id`) REFERENCES `staff_members` (`staff_member_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `trainings`
-  ADD CONSTRAINT `trainings_staff_members_fk` FOREIGN KEY (`staff_member_id`) REFERENCES `staff_members` (`staff_member_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `trainings_training_types_fk` FOREIGN KEY (`training_type_id`) REFERENCES `training_types` (`training_type_id`);
+  ADD CONSTRAINT `trainings_staff_members_fk` FOREIGN KEY (`staff_member_id`) REFERENCES `staff_members` (`staff_member_id`) ON DELETE CASCADE ON UPDATE CASCADE;
