@@ -18,6 +18,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
+	//Generate metadata from entities
+	annotationProcessor 'org.hibernate:hibernate-jpamodelgen:5.4.31.Final'
+	
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
