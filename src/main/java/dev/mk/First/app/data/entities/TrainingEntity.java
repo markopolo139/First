@@ -1,4 +1,4 @@
-package dev.mk.First.app.data.entity;
+package dev.mk.First.app.data.entities;
 
 import dev.mk.First.business.value.TrainingType;
 
