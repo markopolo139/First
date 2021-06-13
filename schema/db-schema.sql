@@ -1,12 +1,11 @@
 
 CREATE TABLE `calls` (
   `call_id` mediumint(9) NOT NULL,
-  `startDate` datetime NOT NULL,
-  `endDate` datetime NOT NULL,
+  `start_date` datetime NOT NULL,
+  `end_date` datetime NOT NULL,
   `location` varchar(60) NOT NULL,
   `details` varchar(150) DEFAULT NULL,
-  `call_type_id` mediumint(9) NOT NULL,
-  `type` varchar(40) NOT NULL
+  `type` ENUM('FIRE','LOCAL_THREAT','TRAINING','FALSE_ALARM','SECURE_REGION') NOT NULL
 );
 
 CREATE TABLE `equipment` (
@@ -59,7 +58,7 @@ CREATE TABLE `staff_members` (
   `periodic_examinations_expiry_date` date DEFAULT NULL,
   `is_driver` tinyint(1) NOT NULL DEFAULT 0,
   `birthdate` date NOT NULL,
-  `blood_type` varchar(5) not null,
+  `blood_type` ENUM('O_PLUS','O_MINUS','A_PLUS','A_MINUS','B_PLUS','B_MINUS','AB_PLUS','AB_MINUS') not null,
   `email` varchar(60) NOT NULL,
   `phone_number` varchar(20) DEFAULT NULL
 );
@@ -79,12 +78,25 @@ CREATE TABLE `trainings` (
 
 CREATE TABLE `training_types` (
   `training_type_id` mediumint(9) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `name` ENUM('BASIC',
+            'QUALIFIED_FIRST_AID',
+            'TECHNICAL_RESCUE',
+            'ANTI_FLOOD_AND_WATER_RESCUE',
+            'MAINTENANCE_DRIVER_RESCUE_EQUIPMENT',
+            'LEADERS',
+            'HEADERS',
+            'COMMUNE_COMMANDER',
+            'LIFT',
+            'CHEM_ECO_RESCUE',
+            'SEARCH_AND_RESCUE',
+            'HIGH_ALTITUDE_RESCUE',
+            'LADDER',
+            'HELMSMAN',
+            'SAWMAN') NOT NULL
 );
 
 ALTER TABLE `calls`
-  ADD PRIMARY KEY (`call_id`),
-  ADD KEY `calls_ibfk_1` (`call_type_id`);
+  ADD PRIMARY KEY (`call_id`);
 
 ALTER TABLE `equipment`
   ADD PRIMARY KEY (`equipment_id`);
@@ -122,29 +134,29 @@ ALTER TABLE `training_types`
   ADD PRIMARY KEY (`training_type_id`);
 
 ALTER TABLE `calls`
-  MODIFY `call_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `call_id` mediumint(9) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `equipment`
-  MODIFY `equipment_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `equipment_id` mediumint(9) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `fire_trucks`
-  MODIFY `fire_truck_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `fire_truck_id` mediumint(9) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `fire_truck_parameters`
-  MODIFY `fire_truck_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `fire_truck_id` mediumint(9) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `fire_truck_services`
   MODIFY `fire_truck_services_id` mediumint(9) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `staff_members`
-  MODIFY `staff_member_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `staff_member_id` mediumint(9) NOT NULL AUTO_INCREMENT;
 
 
 ALTER TABLE `trainings`
-  MODIFY `training_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `training_id` mediumint(9) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `training_types`
-  MODIFY `training_type_id` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `training_type_id` mediumint(9) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `fire_trucks_in_action`
   ADD CONSTRAINT `fire_trucks_in_action_calls_fk` FOREIGN KEY (`call_id`) REFERENCES `calls` (`call_id`) ON DELETE CASCADE ON UPDATE CASCADE,
