@@ -7,14 +7,14 @@ public class FireTruck {
 
     private String mTruckName;
     private double mPrice;
-    private String mVim;
+    private String mVin;
     private int mProductionYear;
     private String mOperationalNumber;
     private String mTruckType;
     private int mHorsepower;
     private int mNumberOfSeats;
     private int mMileage;
-    private Collection<TruckParameter> mTruckParameters;
+    private Collection<FireTruckParameter> mFireTruckParameters;
 
     public static Builder builder() {
         return new Builder();
@@ -28,8 +28,8 @@ public class FireTruck {
         return mPrice;
     }
 
-    public String getVim() {
-        return mVim;
+    public String getVin() {
+        return mVin;
     }
 
     public int getProductionYear() {
@@ -56,8 +56,8 @@ public class FireTruck {
         return mMileage;
     }
 
-    public Collection<TruckParameter> getTruckParameters() {
-        return mTruckParameters;
+    public Collection<FireTruckParameter> getTruckParameters() {
+        return mFireTruckParameters;
     }
 
     public static class Builder {
@@ -74,8 +74,8 @@ public class FireTruck {
             return this;
         }
 
-        public Builder setVim(String vim) {
-            mFireTruck.mVim = vim;
+        public Builder setVin(String vin) {
+            mFireTruck.mVin = vin;
             return this;
         }
 
@@ -109,8 +109,8 @@ public class FireTruck {
             return this;
         }
 
-        public Builder setTruckParameters(Collection<TruckParameter> truckParameters) {
-            mFireTruck.mTruckParameters = truckParameters;
+        public Builder setTruckParameters(Collection<FireTruckParameter> fireTruckParameters) {
+            mFireTruck.mFireTruckParameters = fireTruckParameters;
             return this;
         }
 
@@ -122,7 +122,7 @@ public class FireTruck {
                     || mFireTruck.mOperationalNumber.equals("")
                     || mFireTruck.mPrice == 0
                     || mFireTruck.mProductionYear == 0
-                    || mFireTruck.mVim.equals("")
+                    || mFireTruck.mVin.equals("")
             )
                 throw new IllegalStateException("Not all parameters specified");
         }
@@ -137,20 +137,20 @@ public class FireTruck {
     private FireTruck() {}
 
     public FireTruck(
-            String truckName, double price, String vim, int productionYear, String operationalNumber, String truckType,
-            int horsepower, int numberOfSeats, int mileage, Collection<TruckParameter> truckParameters
+            String truckName, double price, String vin, int productionYear, String operationalNumber, String truckType,
+            int horsepower, int numberOfSeats, int mileage, Collection<FireTruckParameter> fireTruckParameters
     )
     {
         mTruckName = truckName;
         mPrice = price;
-        mVim = vim;
+        mVin = vin;
         mProductionYear = productionYear;
         mOperationalNumber = operationalNumber;
         mTruckType = truckType;
         mHorsepower = horsepower;
         mNumberOfSeats = numberOfSeats;
         mMileage = mileage;
-        mTruckParameters = truckParameters;
+        mFireTruckParameters = fireTruckParameters;
     }
 
     @Override
@@ -165,7 +165,7 @@ public class FireTruck {
                 && getNumberOfSeats() == fireTruck.getNumberOfSeats()
                 && getMileage() == fireTruck.getMileage()
                 && getTruckName().equals(fireTruck.getTruckName())
-                && getVim().equals(fireTruck.getVim())
+                && getVin().equals(fireTruck.getVin())
                 && getOperationalNumber().equals(fireTruck.getOperationalNumber())
                 && getTruckType().equals(fireTruck.getTruckType())
                 && getTruckParameters().equals(fireTruck.getTruckParameters()
@@ -175,7 +175,7 @@ public class FireTruck {
     @Override
     public int hashCode() {
         return Objects.hash(
-                getTruckName(), getPrice(), getVim(), getProductionYear(), getOperationalNumber(), getTruckType(),
+                getTruckName(), getPrice(), getVin(), getProductionYear(), getOperationalNumber(), getTruckType(),
                 getHorsepower(), getNumberOfSeats(), getMileage(), getTruckParameters()
         );
     }
