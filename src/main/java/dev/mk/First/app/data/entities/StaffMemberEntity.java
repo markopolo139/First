@@ -4,6 +4,7 @@ import dev.mk.First.business.value.BloodType;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -51,12 +52,16 @@ public class StaffMemberEntity {
     @Column(name = "phone_number")
     public String phoneNumber;
 
+    @OneToMany(mappedBy = "staff_member_id")
+    public Collection<TrainingEntity> trainings;
+
     public StaffMemberEntity() {
     }
 
     public StaffMemberEntity(String firstname, String lastname, LocalDate joiningDate, int pesel, String address,
                              String city, LocalDate periodicExaminationsExpiryDate, boolean isDriver,
-                             LocalDate birthdate, BloodType bloodType, String email, String phoneNumber)
+                             LocalDate birthdate, BloodType bloodType, String email, String phoneNumber,
+                             Collection<TrainingEntity> trainings)
     {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -70,6 +75,7 @@ public class StaffMemberEntity {
         this.bloodType = bloodType;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.trainings = trainings;
     }
 
     @Override
@@ -77,22 +83,24 @@ public class StaffMemberEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         StaffMemberEntity that = (StaffMemberEntity) o;
-        return id == that.id && pesel == that.pesel && isDriver == that.isDriver
-                && Objects.equals(firstname, that.firstname)
-                && Objects.equals(lastname, that.lastname)
-                && Objects.equals(joiningDate, that.joiningDate)
-                && Objects.equals(address, that.address)
-                && Objects.equals(city, that.city)
+        return id == that.id && pesel == that.pesel
+                && isDriver == that.isDriver
+                && firstname.equals(that.firstname)
+                && lastname.equals(that.lastname)
+                && joiningDate.equals(that.joiningDate)
+                && address.equals(that.address)
+                && city.equals(that.city)
                 && Objects.equals(periodicExaminationsExpiryDate, that.periodicExaminationsExpiryDate)
-                && Objects.equals(birthdate, that.birthdate)
+                && birthdate.equals(that.birthdate)
                 && bloodType == that.bloodType
-                && Objects.equals(email, that.email)
-                && Objects.equals(phoneNumber, that.phoneNumber);
+                && email.equals(that.email)
+                && phoneNumber.equals(that.phoneNumber)
+                && Objects.equals(trainings, that.trainings);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, firstname, lastname, joiningDate, pesel, address, city, periodicExaminationsExpiryDate,
-                isDriver, birthdate, bloodType, email, phoneNumber);
+                isDriver, birthdate, bloodType, email, phoneNumber, trainings);
     }
 }

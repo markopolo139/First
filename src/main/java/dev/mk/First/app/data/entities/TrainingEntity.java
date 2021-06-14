@@ -24,7 +24,7 @@ public class TrainingEntity {
     @Column(name = "training_type")
     public TrainingType trainingType;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "staff_member_id")
     public StaffMemberEntity staffMemberEntity;
 
@@ -45,10 +45,10 @@ public class TrainingEntity {
         if (o == null || getClass() != o.getClass()) return false;
         TrainingEntity that = (TrainingEntity) o;
         return trainingId == that.trainingId
-                && Objects.equals(trainingDate, that.trainingDate)
+                && trainingDate.equals(that.trainingDate)
                 && Objects.equals(expirationDate, that.expirationDate)
                 && trainingType == that.trainingType
-                && Objects.equals(staffMemberEntity, that.staffMemberEntity);
+                && staffMemberEntity.equals(that.staffMemberEntity);
     }
 
     @Override

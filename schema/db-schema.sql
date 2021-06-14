@@ -58,9 +58,9 @@ CREATE TABLE `staff_members` (
   `periodic_examinations_expiry_date` date DEFAULT NULL,
   `is_driver` tinyint(1) NOT NULL DEFAULT 0,
   `birthdate` date NOT NULL,
-  `blood_type` ENUM('O_PLUS','O_MINUS','A_PLUS','A_MINUS','B_PLUS','B_MINUS','AB_PLUS','AB_MINUS') not null,
+  `blood_type` ENUM('O_PLUS','O_MINUS','A_PLUS','A_MINUS','B_PLUS','B_MINUS','AB_PLUS','AB_MINUS') NOT NULL,
   `email` varchar(60) NOT NULL,
-  `phone_number` varchar(20) DEFAULT NULL
+  `phone_number` varchar(20) NOT NULL
 );
 
 CREATE TABLE `staff_members_in_action` (
