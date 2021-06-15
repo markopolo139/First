@@ -9,7 +9,7 @@ public class StaffMember {
     private String mFirstname;
     private String mLastname;
     private LocalDate mJoiningDate;
-    private final int mPesel;
+    private String mPesel;
     private String mAddress;
     private String mCity;
     private LocalDate mPeriodicExaminationsExpiryDate;
@@ -32,7 +32,7 @@ public class StaffMember {
         return mJoiningDate;
     }
 
-    public int getPesel() {
+    public String getPesel() {
         return mPesel;
     }
 
@@ -72,7 +72,7 @@ public class StaffMember {
         return mTrainings;
     }
 
-    public StaffMember(String firstname, String lastname, LocalDate joiningDate, int pesel, String address, String city,
+    public StaffMember(String firstname, String lastname, LocalDate joiningDate, String pesel, String address, String city,
                        LocalDate periodicExaminationsExpiryDate, boolean isDriver, LocalDate birthdate,
                        BloodType bloodType, String email, String phoneNumber, Collection<Training> trainings) {
         mFirstname = firstname;
@@ -95,7 +95,7 @@ public class StaffMember {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         StaffMember that = (StaffMember) o;
-        return getPesel() == that.getPesel() && isDriver() == that.isDriver()
+        return getPesel().equals(that.getPesel()) && isDriver() == that.isDriver()
                 && Objects.equals(getFirstname(), that.getFirstname())
                 && Objects.equals(getLastname(), that.getLastname())
                 && Objects.equals(getJoiningDate(), that.getJoiningDate())
