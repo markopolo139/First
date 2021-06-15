@@ -22,21 +22,16 @@ public class TrainingEntity {
     public LocalDate expirationDate;
 
     @Column(name = "training_type")
+    @Enumerated(EnumType.STRING)
     public TrainingType trainingType;
-
-    @ManyToOne
-    @JoinColumn(name = "staff_member_id")
-    public StaffMemberEntity staffMemberEntity;
 
     public TrainingEntity() {
     }
 
-    public TrainingEntity(LocalDate trainingDate, LocalDate expirationDate, TrainingType trainingType,
-                          StaffMemberEntity staffMemberEntity) {
+    public TrainingEntity(LocalDate trainingDate, LocalDate expirationDate, TrainingType trainingType) {
         this.trainingDate = trainingDate;
         this.expirationDate = expirationDate;
         this.trainingType = trainingType;
-        this.staffMemberEntity = staffMemberEntity;
     }
 
     @Override
@@ -47,12 +42,11 @@ public class TrainingEntity {
         return trainingId == that.trainingId
                 && trainingDate.equals(that.trainingDate)
                 && Objects.equals(expirationDate, that.expirationDate)
-                && trainingType == that.trainingType
-                && staffMemberEntity.equals(that.staffMemberEntity);
+                && trainingType == that.trainingType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(trainingId, trainingDate, expirationDate, trainingType, staffMemberEntity);
+        return Objects.hash(trainingId, trainingDate, expirationDate, trainingType);
     }
 }

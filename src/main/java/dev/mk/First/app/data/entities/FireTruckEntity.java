@@ -1,8 +1,7 @@
 package dev.mk.First.app.data.entities;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "fire_trucks")
@@ -42,14 +41,7 @@ public class FireTruckEntity {
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "fire_truck_parameters", joinColumns = @JoinColumn(name = "fire_truck_id"))
-    @Column(name = "fire_truck_id")
     public Collection<FireTruckParameterEntity> parameters;
-
-    @ManyToMany
-    @JoinTable(name = "fire_trucks_in_action",
-                joinColumns = {@JoinColumn(name = "fire_truck_id")},
-                inverseJoinColumns = {@JoinColumn(name = "call_id")})
-    public Collection<CallsEntity> callsFT;
 
     public FireTruckEntity() {
     }

@@ -4,6 +4,7 @@ import dev.mk.First.business.value.CallType;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
@@ -28,7 +29,20 @@ public class CallsEntity {
     public String details;
 
     @Column(name = "type")
+    @Enumerated(EnumType.STRING)
     public CallType callType;
+
+    @ManyToMany
+    @JoinTable(name = "fire_trucks_in_action",
+            joinColumns = {@JoinColumn(name = "call_id")},
+            inverseJoinColumns = {@JoinColumn(name = "fire_truck_id")})
+    public Collection<FireTruckEntity> fireTrucksInAction;
+
+    @ManyToMany
+    @JoinTable(name = "staff_members_in_action",
+            joinColumns = {@JoinColumn(name = "call_id")},
+            inverseJoinColumns = {@JoinColumn(name = "staff_member_id")})
+    public Collection<StaffMemberEntity> staffMembersInAction;
 
     public CallsEntity(
             LocalDateTime startDate, LocalDateTime endDate, String location, String details, CallType callType
