@@ -36,7 +36,7 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request
     ) {
-        List<ApiSubError> apiSubErrors = ex.getFieldErrors().stream().map(
+        List<ApiSubError> apiSubErrors = ex.getBindingResult().getFieldErrors().stream().map(
                 i -> new ApiSubError(
                         "Type valid value",
                         "Not valid value" + i.getRejectedValue() + "-" + i.getDefaultMessage()
