@@ -1,6 +1,7 @@
 package dev.mk.First.app.data.entities;
 
 import javax.persistence.Embeddable;
+
 @Embeddable
 public class FireTruckParameterEntity {
 
