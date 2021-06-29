@@ -46,4 +46,13 @@ public class CallModel {
         this.fireTrucksInAction = fireTrucksInAction;
         this.staffMembersInAction = staffMembersInAction;
     }
+
+    public CallModel(LocalDateTime startDateTime, LocalDateTime endDateTime,
+                     String callType, String location, String details) {
+        this.startDateTime = startDateTime;
+        this.endDateTime = endDateTime;
+        this.callType = callType;
+        this.location = location;
+        this.details = details;
+    }
 }

@@ -55,6 +55,19 @@ public class CallEntity {
         this.callType = callType;
     }
 
+    public CallEntity(
+            LocalDateTime startDate, LocalDateTime endDate, String location, String details, CallType callType,
+            Collection<FireTruckEntity> fireTrucksInAction, Collection<StaffMemberEntity> staffMembersInAction)
+    {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.location = location;
+        this.details = details;
+        this.callType = callType;
+        this.fireTrucksInAction = fireTrucksInAction;
+        this.staffMembersInAction = staffMembersInAction;
+    }
+
     public CallEntity() {}
 
     @Override
