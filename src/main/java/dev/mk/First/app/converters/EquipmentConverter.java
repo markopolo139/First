@@ -13,7 +13,7 @@ public interface EquipmentConverter {
 
     EquipmentEntity convertToEntity(EquipmentModel equipmentModel);
 
-    Collection<EquipmentModel> convertCollectionToModel(Collection<EquipmentEntity> equipmentEntityCollection);
+    Collection<EquipmentModel> convertCollectionToModel(Collection<EquipmentEntity> equipmentEntities);
 
     Collection<EquipmentEntity> convertCollectionToEntity(Collection<EquipmentModel> equipmentModels);
 }
