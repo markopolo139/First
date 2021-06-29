@@ -5,7 +5,7 @@ import javax.validation.constraints.NotBlank;
 public class FireTruckParameterModel {
 
     @NotBlank
-    public String key;
+    public String parameter;
 
     @NotBlank
     public String value;
@@ -13,8 +13,8 @@ public class FireTruckParameterModel {
     public FireTruckParameterModel() {
     }
 
-    public FireTruckParameterModel(String key, String value) {
-        this.key = key;
+    public FireTruckParameterModel(String parameter, String value) {
+        this.parameter = parameter;
         this.value = value;
     }
 }
