@@ -1,4 +1,4 @@
-package dev.mk.First.web.Error;
+package dev.mk.First.web.error;
 
 import org.springframework.http.HttpStatus;
 
