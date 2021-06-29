@@ -9,7 +9,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "calls")
-public class CallsEntity {
+public class CallEntity {
 
     @Id
     @GeneratedValue
@@ -44,7 +44,7 @@ public class CallsEntity {
             inverseJoinColumns = {@JoinColumn(name = "staff_member_id")})
     public Collection<StaffMemberEntity> staffMembersInAction;
 
-    public CallsEntity(
+    public CallEntity(
             LocalDateTime startDate, LocalDateTime endDate, String location, String details, CallType callType
     )
     {
@@ -55,13 +55,13 @@ public class CallsEntity {
         this.callType = callType;
     }
 
-    public CallsEntity() {}
+    public CallEntity() {}
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CallsEntity that = (CallsEntity) o;
+        CallEntity that = (CallEntity) o;
         return id == that.id
                 && startDate.equals(that.startDate)
                 && endDate.equals(that.endDate)
