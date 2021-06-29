@@ -1,14 +1,10 @@
 package dev.mk.First.web.models;
 
-import dev.mk.First.business.value.CallType;
-import dev.mk.First.business.value.FireTruck;
-import dev.mk.First.business.value.StaffMember;
 import dev.mk.First.web.validation.ValidCallType;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
@@ -28,7 +24,7 @@ public class CallModel {
     public String location;
 
     @NotBlank
-    public String description;
+    public String details;
 
     @NotEmpty
     public Collection<FireTruckModel> fireTrucksInAction;
@@ -40,13 +36,13 @@ public class CallModel {
     }
 
     public CallModel(LocalDateTime startDateTime, LocalDateTime endDateTime, String callType, String location,
-                     String description, Collection<FireTruckModel> fireTrucksInAction,
+                     String details, Collection<FireTruckModel> fireTrucksInAction,
                      Collection<StaffMemberModel> staffMembersInAction) {
         this.startDateTime = startDateTime;
         this.endDateTime = endDateTime;
         this.callType = callType;
         this.location = location;
-        this.description = description;
+        this.details = details;
         this.fireTrucksInAction = fireTrucksInAction;
         this.staffMembersInAction = staffMembersInAction;
     }

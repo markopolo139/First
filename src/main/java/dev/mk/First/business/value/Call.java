@@ -1,6 +1,5 @@
 package dev.mk.First.business.value;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Objects;
@@ -11,7 +10,7 @@ public class Call {
     private LocalDateTime mEndDateTime;
     private CallType mCallType;
     private String mLocation;
-    private String mDescription;
+    private String mDetails;
     private Collection<FireTruck> mFireTrucksInAction;
     private Collection<StaffMember> mStaffMembersInAction;
 
@@ -31,8 +30,8 @@ public class Call {
         return mLocation;
     }
 
-    public String getDescription() {
-        return mDescription;
+    public String getDetails() {
+        return mDetails;
     }
 
     public Collection<FireTruck> getFireTrucksInAction() {
@@ -51,7 +50,7 @@ public class Call {
         mEndDateTime = endDateTime;
         mCallType = callType;
         mLocation = location;
-        mDescription = description;
+        mDetails = description;
         mFireTrucksInAction = fireTrucksInAction;
         mStaffMembersInAction = staffMembersInAction;
     }
@@ -65,7 +64,7 @@ public class Call {
                 && getEndDateTime().equals(call.getEndDateTime())
                 && getCallType() == call.getCallType()
                 && getLocation().equals(call.getLocation())
-                && Objects.equals(getDescription(), call.getDescription())
+                && Objects.equals(getDetails(), call.getDetails())
                 && getFireTrucksInAction().equals(call.getFireTrucksInAction())
                 && getStaffMembersInAction().equals(call.getStaffMembersInAction());
     }
@@ -73,7 +72,7 @@ public class Call {
     @Override
     public int hashCode() {
         return Objects.hash(
-                getStartDateTime(), getEndDateTime(), getCallType(), getLocation(), getDescription(),
+                getStartDateTime(), getEndDateTime(), getCallType(), getLocation(), getDetails(),
                 getFireTrucksInAction(), getStaffMembersInAction()
         );
     }
