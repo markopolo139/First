@@ -19,8 +19,8 @@ public class EquipmentConverterImpl implements EquipmentConverter {
     }
 
     @Override
-    public Collection<EquipmentModel> convertCollectionToModel(Collection<EquipmentEntity> equipmentEntityCollection) {
-        return equipmentEntityCollection.stream().map(this::convertToModel).collect(Collectors.toList());
+    public Collection<EquipmentModel> convertCollectionToModel(Collection<EquipmentEntity> equipmentEntities) {
+        return equipmentEntities.stream().map(this::convertToModel).collect(Collectors.toList());
     }
 
     @Override

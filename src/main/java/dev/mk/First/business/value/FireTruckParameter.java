@@ -1,15 +1,14 @@
 package dev.mk.First.business.value;
 
-import javax.persistence.Embeddable;
 import java.util.Objects;
 
 public class FireTruckParameter {
 
-    private String key;
+    private String parameter;
     private String value;
 
-    public String getKey() {
-        return key;
+    public String getParameter() {
+        return parameter;
     }
 
     public String getValue() {
@@ -17,7 +16,7 @@ public class FireTruckParameter {
     }
 
     public FireTruckParameter(String key, String value) {
-        this.key = key;
+        this.parameter = key;
         this.value = value;
     }
 
@@ -26,11 +25,11 @@ public class FireTruckParameter {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FireTruckParameter that = (FireTruckParameter) o;
-        return getKey().equals(that.getKey()) && Objects.equals(getValue(), that.getValue());
+        return getParameter().equals(that.getParameter()) && Objects.equals(getValue(), that.getValue());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getKey(), getValue());
+        return Objects.hash(getParameter(), getValue());
     }
 }
