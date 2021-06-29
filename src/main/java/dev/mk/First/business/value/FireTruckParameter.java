@@ -3,7 +3,6 @@ package dev.mk.First.business.value;
 import javax.persistence.Embeddable;
 import java.util.Objects;
 
-@Embeddable
 public class FireTruckParameter {
 
     private String key;

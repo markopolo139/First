@@ -26,4 +26,17 @@ public class EquipmentInteractor {
     public void saveEntity(EquipmentModel equipmentModel) {
         mEquipmentRepository.save(mEquipmentConverter.convertToEntity(equipmentModel));
     }
+
+    public void deleteEntity(Integer id) {
+        mEquipmentRepository.deleteById(id);
+    }
+
+    public void updateEntity(Integer id, EquipmentModel updatedEquipment) {
+
+        mEquipmentRepository.deleteById(id);
+        EquipmentEntity updatedEntity = mEquipmentConverter.convertToEntity(updatedEquipment);
+        updatedEntity.equipmentId = id;
+        mEquipmentRepository.save(updatedEntity);
+
+    }
 }
