@@ -1,8 +1,4 @@
-package dev.mk.First.web.Error;
-
-import org.springframework.http.HttpStatus;
-
-import java.util.Collection;
+package dev.mk.First.web.error;
 
 public class ApiSubError {
 

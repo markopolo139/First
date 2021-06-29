@@ -1,4 +1,4 @@
-package dev.mk.First.web.Error;
+package dev.mk.First.web.error;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
