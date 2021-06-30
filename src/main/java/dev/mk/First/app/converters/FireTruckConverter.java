@@ -16,7 +16,7 @@ public interface FireTruckConverter {
 
     FireTruckModel convertToModel(FireTruckEntity fireTruckEntity);
 
-    Collection<FireTruckEntity> convertListToEntity(Collection<FireTruckModel> fireTruckModelCollection);
+    Collection<FireTruckEntity> convertListToEntity(Collection<FireTruckModel> fireTruckModels);
 
     Collection<FireTruckModel> convertListToModel(Collection<FireTruckEntity> fireTruckEntities);
 }

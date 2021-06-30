@@ -13,7 +13,7 @@ public interface CallConverter {
 
     CallModel convertToModel(CallEntity callEntity);
 
-    Collection<CallEntity> convertListToEntity(Collection<CallModel> callModelList);
+    Collection<CallEntity> convertListToEntity(Collection<CallModel> callModels);
 
-    Collection<CallModel> convertListToModel(Collection<CallEntity> callEntityList);
+    Collection<CallModel> convertListToModel(Collection<CallEntity> callEntities);
 }
