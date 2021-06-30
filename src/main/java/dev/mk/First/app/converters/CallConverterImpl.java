@@ -26,7 +26,7 @@ public class CallConverterImpl implements CallConverter{
                 callModel.details,
                 CallType.valueOf(callModel.callType),
                 mFireTruckConverter.convertListToEntity(callModel.fireTrucksInAction),
-                mStaffMemberConverter.convertListToEntity(callModel.staffMembersInAction)
+                mStaffMemberConverter.convertCollectionToEntity(callModel.staffMembersInAction)
         );
     }
 
@@ -39,7 +39,7 @@ public class CallConverterImpl implements CallConverter{
                 callEntity.location,
                 callEntity.details,
                 mFireTruckConverter.convertListToModel(callEntity.fireTrucksInAction),
-                mStaffMemberConverter.convertListToModel(callEntity.staffMembersInAction)
+                mStaffMemberConverter.convertCollectionToModel(callEntity.staffMembersInAction)
         );
     }
 

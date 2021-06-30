@@ -16,8 +16,8 @@ public interface StaffMemberConverter {
 
     StaffMemberModel convertToModel(StaffMemberEntity staffMemberEntity);
 
-    Collection<StaffMemberEntity> convertListToEntity(Collection<StaffMemberModel> staffMemberModels);
+    Collection<StaffMemberEntity> convertCollectionToEntity(Collection<StaffMemberModel> staffMemberModels);
 
-    Collection<StaffMemberModel> convertListToModel(Collection<StaffMemberEntity> staffMemberEntities);
+    Collection<StaffMemberModel> convertCollectionToModel(Collection<StaffMemberEntity> staffMemberEntities);
 
 }
