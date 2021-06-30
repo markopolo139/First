@@ -4,6 +4,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 import java.util.Collection;
+import java.util.Objects;
 
 public class FireTruckModel {
 
@@ -53,5 +54,30 @@ public class FireTruckModel {
         this.numberOfSeats = numberOfSeats;
         this.mileage = mileage;
         this.fireTruckParameters = fireTruckParameters;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FireTruckModel that = (FireTruckModel) o;
+        return Double.compare(that.price, price) == 0
+                && productionYear == that.productionYear
+                && horsepower == that.horsepower
+                && numberOfSeats == that.numberOfSeats
+                && mileage == that.mileage
+                && Objects.equals(name, that.name)
+                && Objects.equals(vin, that.vin)
+                && Objects.equals(operationalNumber, that.operationalNumber)
+                && Objects.equals(type, that.type)
+                && Objects.equals(fireTruckParameters, that.fireTruckParameters);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                name, price, vin, productionYear, operationalNumber,
+                type, horsepower, numberOfSeats, mileage, fireTruckParameters
+        );
     }
 }

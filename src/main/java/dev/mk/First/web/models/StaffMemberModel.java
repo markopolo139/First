@@ -8,6 +8,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Objects;
 
 public class StaffMemberModel {
 
@@ -71,5 +72,36 @@ public class StaffMemberModel {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.trainings = trainings;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StaffMemberModel that = (StaffMemberModel) o;
+        return isDriver == that.isDriver
+                && Objects.equals(firstname, that.firstname)
+                && Objects.equals(lastname, that.lastname)
+                && Objects.equals(joiningDate, that.joiningDate)
+                && Objects.equals(pesel, that.pesel)
+                && Objects.equals(address, that.address)
+                && Objects.equals(city, that.city)
+                && Objects.equals(periodicExaminationsExpiryDate, that.periodicExaminationsExpiryDate)
+                && Objects.equals(birthdate, that.birthdate)
+                && Objects.equals(bloodType, that.bloodType)
+                && Objects.equals(email, that.email)
+                && Objects.equals(phoneNumber, that.phoneNumber)
+                && Objects.equals(trainings, that.trainings);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(
+                firstname, lastname, joiningDate,
+                pesel, address, city,
+                periodicExaminationsExpiryDate,
+                isDriver, birthdate, bloodType,
+                email, phoneNumber, trainings
+        );
     }
 }
