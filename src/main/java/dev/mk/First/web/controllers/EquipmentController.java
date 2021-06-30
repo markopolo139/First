@@ -27,8 +27,13 @@ public class EquipmentController {
     }
 
     @DeleteMapping(path = "/api/v1/deleteEquipment")
-    public void deleteEquipment(Integer id) {
+    public void deleteEquipmentById(Integer id) {
         mEquipmentInteractor.deleteEntity(id);
+    }
+
+    @DeleteMapping(path = "/api/v1/deleteEquipment")
+    public void deleteEquipmentByIdCollection(Collection<Integer> id) {
+        mEquipmentInteractor.deleteEntities(id);
     }
 
     @PatchMapping(path = "/api/v1/updateEquipment")

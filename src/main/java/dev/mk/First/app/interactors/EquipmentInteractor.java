@@ -31,6 +31,10 @@ public class EquipmentInteractor {
         mEquipmentRepository.deleteById(id);
     }
 
+    public void deleteEntities(Collection<Integer> id) {
+        mEquipmentRepository.deleteAllById(id);
+    }
+
     public void updateEntity(Integer id, EquipmentModel updatedEquipment) {
 
         mEquipmentRepository.deleteById(id);
