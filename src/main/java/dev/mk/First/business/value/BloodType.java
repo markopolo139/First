@@ -52,4 +52,12 @@ public enum BloodType {
 
     public abstract String getBloodType();
 
+    public static BloodType fromString(String bloodType) {
+        for(BloodType bt : BloodType.values()) {
+            if(bt.getBloodType().equals(bloodType)) {
+                return bt;
+            }
+        }
+        throw new IllegalStateException();
+    }
 }
