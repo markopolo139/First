@@ -25,8 +25,8 @@ public class CallConverterImpl implements CallConverter{
                 callModel.location,
                 callModel.details,
                 CallType.valueOf(callModel.callType),
-                mFireTruckConverter.convertListToEntity(callModel.fireTrucksInAction),
-                mStaffMemberConverter.convertListToEntity(callModel.staffMembersInAction)
+                mFireTruckConverter.convertCollectionToEntity(callModel.fireTrucksInAction),
+                mStaffMemberConverter.convertCollectionToEntity(callModel.staffMembersInAction)
         );
     }
 
@@ -38,18 +38,18 @@ public class CallConverterImpl implements CallConverter{
                 callEntity.callType.name(),
                 callEntity.location,
                 callEntity.details,
-                mFireTruckConverter.convertListToModel(callEntity.fireTrucksInAction),
-                mStaffMemberConverter.convertListToModel(callEntity.staffMembersInAction)
+                mFireTruckConverter.convertCollectionToModel(callEntity.fireTrucksInAction),
+                mStaffMemberConverter.convertCollectionToModel(callEntity.staffMembersInAction)
         );
     }
 
     @Override
-    public Collection<CallEntity> convertListToEntity(Collection<CallModel> callModelList) {
+    public Collection<CallEntity> convertCollectionToEntity(Collection<CallModel> callModelList) {
         return callModelList.stream().map(this::convertToEntity).collect(Collectors.toList());
     }
 
     @Override
-    public Collection<CallModel> convertListToModel(Collection<CallEntity> callEntityList) {
+    public Collection<CallModel> convertCollectionToModel(Collection<CallEntity> callEntityList) {
         return callEntityList.stream().map(this::convertToModel).collect(Collectors.toList());
     }
 }
