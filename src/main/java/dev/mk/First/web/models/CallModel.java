@@ -7,6 +7,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Objects;
 
 public class CallModel {
 
@@ -54,5 +55,25 @@ public class CallModel {
         this.callType = callType;
         this.location = location;
         this.details = details;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CallModel callModel = (CallModel) o;
+        return Objects.equals(startDateTime, callModel.startDateTime)
+                && Objects.equals(endDateTime, callModel.endDateTime)
+                && Objects.equals(callType, callModel.callType)
+                && Objects.equals(location, callModel.location)
+                && Objects.equals(details, callModel.details)
+                && Objects.equals(fireTrucksInAction, callModel.fireTrucksInAction)
+                && Objects.equals(staffMembersInAction, callModel.staffMembersInAction);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(startDateTime, endDateTime, callType, location, details, fireTrucksInAction,
+                staffMembersInAction);
     }
 }
