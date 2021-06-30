@@ -47,7 +47,7 @@ public class FireTruckEntity {
     }
 
     public FireTruckEntity(String name, double price, String vin, int productionYear, String operationalNumbers,
-                           String type, int horsepower, int numberOfSeats, int mileage)
+                           String type, int horsepower, int numberOfSeats, int mileage, Collection<FireTruckParameterEntity> parameters)
     {
         this.name = name;
         this.price = price;
@@ -58,6 +58,7 @@ public class FireTruckEntity {
         this.horsepower = horsepower;
         this.numberOfSeats = numberOfSeats;
         this.mileage = mileage;
+        this.parameters = parameters;
     }
 
     @Override

@@ -5,12 +5,12 @@ import java.util.Objects;
 
 public class FireTruck {
 
-    private String mTruckName;
+    private String mName;
     private double mPrice;
     private String mVin;
     private int mProductionYear;
     private String mOperationalNumber;
-    private String mTruckType;
+    private String mType;
     private int mHorsepower;
     private int mNumberOfSeats;
     private int mMileage;
@@ -20,8 +20,8 @@ public class FireTruck {
         return new Builder();
     }
 
-    public String getTruckName() {
-        return mTruckName;
+    public String getName() {
+        return mName;
     }
 
     public double getPrice() {
@@ -40,8 +40,8 @@ public class FireTruck {
         return mOperationalNumber;
     }
 
-    public String getTruckType() {
-        return mTruckType;
+    public String getType() {
+        return mType;
     }
 
     public int getHorsepower() {
@@ -64,8 +64,8 @@ public class FireTruck {
 
         private FireTruck mFireTruck = new FireTruck();
 
-        public Builder setTruckName(String truckName) {
-            mFireTruck.mTruckName = truckName;
+        public Builder setName(String name) {
+            mFireTruck.mName = name;
             return this;
         }
 
@@ -89,8 +89,8 @@ public class FireTruck {
             return this;
         }
 
-        public Builder setTruckType(String truckType) {
-            mFireTruck.mTruckType = truckType;
+        public Builder setType(String type) {
+            mFireTruck.mType = type;
             return this;
         }
 
@@ -115,8 +115,8 @@ public class FireTruck {
         }
 
         public void validate() {
-            if(mFireTruck.mTruckName.equals("")
-                    || mFireTruck.mTruckType.equals("")
+            if(mFireTruck.mName.equals("")
+                    || mFireTruck.mType.equals("")
                     || mFireTruck.mHorsepower == 0
                     || mFireTruck.mNumberOfSeats == 0
                     || mFireTruck.mOperationalNumber.equals("")
@@ -137,16 +137,16 @@ public class FireTruck {
     private FireTruck() {}
 
     public FireTruck(
-            String truckName, double price, String vin, int productionYear, String operationalNumber, String truckType,
+            String name, double price, String vin, int productionYear, String operationalNumber, String type,
             int horsepower, int numberOfSeats, int mileage, Collection<FireTruckParameter> fireTruckParameters
     )
     {
-        mTruckName = truckName;
+        mName = name;
         mPrice = price;
         mVin = vin;
         mProductionYear = productionYear;
         mOperationalNumber = operationalNumber;
-        mTruckType = truckType;
+        mType = type;
         mHorsepower = horsepower;
         mNumberOfSeats = numberOfSeats;
         mMileage = mileage;
@@ -164,10 +164,10 @@ public class FireTruck {
                 && getHorsepower() == fireTruck.getHorsepower()
                 && getNumberOfSeats() == fireTruck.getNumberOfSeats()
                 && getMileage() == fireTruck.getMileage()
-                && getTruckName().equals(fireTruck.getTruckName())
+                && getName().equals(fireTruck.getName())
                 && getVin().equals(fireTruck.getVin())
                 && getOperationalNumber().equals(fireTruck.getOperationalNumber())
-                && getTruckType().equals(fireTruck.getTruckType())
+                && getType().equals(fireTruck.getType())
                 && getTruckParameters().equals(fireTruck.getTruckParameters()
         );
     }
@@ -175,7 +175,7 @@ public class FireTruck {
     @Override
     public int hashCode() {
         return Objects.hash(
-                getTruckName(), getPrice(), getVin(), getProductionYear(), getOperationalNumber(), getTruckType(),
+                getName(), getPrice(), getVin(), getProductionYear(), getOperationalNumber(), getType(),
                 getHorsepower(), getNumberOfSeats(), getMileage(), getTruckParameters()
         );
     }
