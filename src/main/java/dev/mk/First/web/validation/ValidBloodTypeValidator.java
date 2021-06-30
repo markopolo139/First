@@ -10,7 +10,7 @@ public class ValidBloodTypeValidator implements ConstraintValidator<ValidBloodTy
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
         try{
-            BloodType.valueOf(value);
+            BloodType.fromString(value);
             return true;
         }
         catch (Exception e) {
