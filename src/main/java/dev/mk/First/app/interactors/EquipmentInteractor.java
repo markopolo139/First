@@ -20,7 +20,7 @@ public class EquipmentInteractor {
     private EquipmentConverter mEquipmentConverter;
 
     public Collection<EquipmentEntity> findAll() {
-        return mEquipmentRepository.findAll();
+        return (Collection<EquipmentEntity>) mEquipmentRepository.findAll();
     }
 
     public void saveEntity(EquipmentModel equipmentModel) {

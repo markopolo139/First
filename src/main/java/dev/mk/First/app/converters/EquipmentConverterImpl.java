@@ -2,10 +2,12 @@ package dev.mk.First.app.converters;
 
 import dev.mk.First.app.data.entities.EquipmentEntity;
 import dev.mk.First.web.models.EquipmentModel;
+import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+@Component
 public class EquipmentConverterImpl implements EquipmentConverter {
 
     @Override

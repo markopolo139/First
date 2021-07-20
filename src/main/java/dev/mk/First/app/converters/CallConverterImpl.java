@@ -5,10 +5,12 @@ import dev.mk.First.app.data.entities.CallEntity;
 import dev.mk.First.business.value.CallType;
 import dev.mk.First.web.models.CallModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+@Component
 public class CallConverterImpl implements CallConverter{
 
     @Autowired

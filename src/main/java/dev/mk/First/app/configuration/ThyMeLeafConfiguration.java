@@ -14,7 +14,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 public class ThyMeLeafConfiguration {
 
     @Bean
-    @Scope("Singleton")
+    @Scope("singleton")
     public ITemplateResolver getTemplateResolver() {
         ClassLoaderTemplateResolver classLoaderTemplateResolver = new ClassLoaderTemplateResolver();
         classLoaderTemplateResolver.setTemplateMode(TemplateMode.HTML);
@@ -25,7 +25,7 @@ public class ThyMeLeafConfiguration {
     }
 
     @Bean
-    @Scope("Singleton")
+    @Scope("singleton")
     public ITemplateEngine getTemplateEngine() {
         TemplateEngine templateEngine = new TemplateEngine();
         templateEngine.setTemplateResolver(getTemplateResolver());

@@ -19,7 +19,7 @@ public class StaffMemberInteractor {
     private StaffMemberConverter mStaffMemberConverter;
 
     public Collection<StaffMemberEntity> findAll() {
-        return mStaffMemberRepository.findAll();
+        return (Collection<StaffMemberEntity>) mStaffMemberRepository.findAll();
     }
 
     public void saveEntity(StaffMemberModel staffMemberModel) {

@@ -4,10 +4,12 @@ import dev.mk.First.app.data.entities.StaffMemberEntity;
 import dev.mk.First.business.value.BloodType;
 import dev.mk.First.web.models.StaffMemberModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+@Component
 public class StaffMemberConverterImpl implements StaffMemberConverter {
 
     @Autowired

@@ -19,7 +19,7 @@ public class FireTruckInteractor {
     private FireTruckConverter mFireTruckConverter;
 
     public Collection<FireTruckEntity> findAll() {
-        return mFireTruckRepository.findAll();
+        return (Collection<FireTruckEntity>) mFireTruckRepository.findAll();
     }
 
     public void saveEntity(FireTruckModel fireTruckModel) {

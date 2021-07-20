@@ -21,7 +21,7 @@ public class CallInteractor {
     private CallConverter mCallsConverter;
 
     public Collection<CallEntity> findAll() {
-        return mCallRepository.findAll();
+        return (Collection<CallEntity>) mCallRepository.findAll();
     }
 
     public void saveEntity(CallModel callModel) {
