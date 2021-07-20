@@ -84,4 +84,13 @@ public class EquipmentRepositoryImpl implements EquipmentRepository {
     public void deleteAll() {
         mEquipmentEntities.clear();
     }
+
+    @Override
+    public List<EquipmentEntity> findAllByFilter(String name, Double priceStart, Double priceEnd, String serial_number) {
+        return mEquipmentEntities.stream()
+                .filter(i -> i.name.equals(name))
+                .filter(i -> i.price >= priceStart && i.price <= priceEnd)
+                .filter(i -> i.serialNumber.equals(serial_number))
+                .collect(Collectors.toList());
+    }
 }
