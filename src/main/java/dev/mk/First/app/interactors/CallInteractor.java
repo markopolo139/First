@@ -2,10 +2,8 @@ package dev.mk.First.app.interactors;
 
 import dev.mk.First.app.converters.CallConverter;
 import dev.mk.First.app.data.entities.CallEntity;
-import dev.mk.First.app.data.entities.EquipmentEntity;
 import dev.mk.First.app.data.repositories.CallRepository;
 import dev.mk.First.web.models.CallModel;
-import dev.mk.First.web.models.EquipmentModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +38,7 @@ public class CallInteractor {
 
         mCallRepository.deleteById(id);
         CallEntity updatedEntity = mCallsConverter.convertToEntity(updatedCall);
-        updatedEntity.id = id;
+        updatedEntity.callId = id;
         mCallRepository.save(updatedEntity);
 
     }

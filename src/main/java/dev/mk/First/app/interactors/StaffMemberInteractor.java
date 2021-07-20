@@ -38,7 +38,7 @@ public class StaffMemberInteractor {
 
         mStaffMemberRepository.deleteById(id);
         StaffMemberEntity updatedEntity = mStaffMemberConverter.convertToEntity(updatedStaffMember);
-        updatedEntity.id = id;
+        updatedEntity.staffMemberId = id;
         mStaffMemberRepository.save(updatedEntity);
 
     }

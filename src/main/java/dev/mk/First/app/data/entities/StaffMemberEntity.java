@@ -14,7 +14,7 @@ public class StaffMemberEntity {
     @Id
     @GeneratedValue
     @Column(name = "staff_member_id")
-    public int id;
+    public int staffMemberId;
 
     @Column(name = "firstname")
     public String firstname;
@@ -85,7 +85,7 @@ public class StaffMemberEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         StaffMemberEntity that = (StaffMemberEntity) o;
-        return id == that.id && pesel.equals(that.pesel)
+        return staffMemberId == that.staffMemberId && pesel.equals(that.pesel)
                 && isDriver == that.isDriver
                 && firstname.equals(that.firstname)
                 && lastname.equals(that.lastname)
@@ -102,7 +102,7 @@ public class StaffMemberEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstname, lastname, joiningDate, pesel, address, city, periodicExaminationsExpiryDate,
+        return Objects.hash(staffMemberId, firstname, lastname, joiningDate, pesel, address, city, periodicExaminationsExpiryDate,
                 isDriver, birthdate, bloodType, email, phoneNumber, trainings);
     }
 }

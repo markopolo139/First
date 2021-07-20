@@ -14,7 +14,7 @@ public class CallEntity {
     @Id
     @GeneratedValue
     @Column(name = "call_id")
-    public int id;
+    public int callId;
 
     @Column(name = "startDate")
     public LocalDateTime startDate;
@@ -75,7 +75,7 @@ public class CallEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CallEntity that = (CallEntity) o;
-        return id == that.id
+        return callId == that.callId
                 && startDate.equals(that.startDate)
                 && endDate.equals(that.endDate)
                 && location.equals(that.location)
@@ -85,6 +85,6 @@ public class CallEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, startDate, endDate, location, details, callType);
+        return Objects.hash(callId, startDate, endDate, location, details, callType);
     }
 }
