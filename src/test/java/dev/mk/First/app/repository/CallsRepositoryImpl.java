@@ -2,8 +2,10 @@ package dev.mk.First.app.repository;
 
 import dev.mk.First.app.data.entities.CallEntity;
 import dev.mk.First.app.data.repositories.CallRepository;
+import dev.mk.First.business.value.CallType;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -80,5 +82,20 @@ public class CallsRepositoryImpl implements CallRepository {
     @Override
     public void deleteAll() {
         mCallEntities.clear();
+    }
+
+    @Override
+    public List<CallEntity> findAllByFilter(
+            LocalDateTime startDateStart, LocalDateTime startDateEnd,
+            LocalDateTime endDateStart, LocalDateTime endDateEnd,
+            String location, String details, CallType callType
+    ) {
+        return mCallEntities.stream()
+                .filter(i -> !startDateStart.isBefore(i.startDate) && !startDateEnd.isAfter(i.startDate))
+                .filter(i -> !endDateStart.isBefore(i.endDate) && !endDateEnd.isAfter(i.endDate))
+                .filter(i -> i.location.equals(location))
+                .filter( i -> i.details.equals(details))
+                .filter(i -> i.callType.equals(callType))
+                .collect(Collectors.toList());
     }
 }
