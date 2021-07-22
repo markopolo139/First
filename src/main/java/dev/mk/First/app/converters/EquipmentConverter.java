@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 
-@Component
 public interface EquipmentConverter {
 
     EquipmentModel convertToModel(EquipmentEntity equipmentEntity);

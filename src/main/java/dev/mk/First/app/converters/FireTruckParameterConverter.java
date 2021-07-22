@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 
-@Component
 public interface FireTruckParameterConverter {
 
     FireTruckParameterModel convertToModel(FireTruckParameterEntity fireTruckParameterEntity);

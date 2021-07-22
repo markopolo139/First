@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 
-@Component
 public interface CallConverter {
 
     CallEntity convertToEntity(CallModel callModel);
