@@ -21,8 +21,6 @@ public interface CallRepository extends CrudRepository<CallEntity, Integer> {
                     "and (:startDateEnd is null or ce.startDate <= :startDateEnd) " +
                     "and (:endDateStart is null or ce.endDate >= :endDateStart) " +
                     "and (:endDateEnd is null or ce.endDate <= :endDateEnd) " +
-                    "and (:endDateStart is null or ce.endDate >= :endDateStart) " +
-                    "and (:endDateEnd is null or ce.endDate <= :endDateEnd) " +
                     "and (:location is null or ce.location = :location) " +
                     "and (:details is null or ce.details = :details) " +
                     "and (:callType is null or ce.callType = :callType) "

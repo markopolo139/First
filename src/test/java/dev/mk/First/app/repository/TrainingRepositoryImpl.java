@@ -2,8 +2,10 @@ package dev.mk.First.app.repository;
 
 import dev.mk.First.app.data.entities.TrainingEntity;
 import dev.mk.First.app.data.repositories.TrainingRepository;
+import dev.mk.First.business.value.TrainingType;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -83,5 +85,19 @@ public class TrainingRepositoryImpl implements TrainingRepository {
     @Override
     public void deleteAll() {
         mTrainingEntities.clear();
+    }
+
+    @Override
+    public List<TrainingEntity> findAllByFilter(LocalDate training_dateStart, LocalDate training_dateEnd,
+                                                LocalDate expiration_dateStart, LocalDate expiration_dateEnd,
+                                                TrainingType training_type)
+    {
+        return mTrainingEntities.stream()
+                .filter(i -> i.trainingDate.isAfter(training_dateStart)
+                        && i.trainingDate.isBefore(training_dateEnd))
+                .filter(i -> i.expirationDate.isAfter(expiration_dateStart)
+                        && i.expirationDate.isBefore(expiration_dateEnd))
+                .filter(i -> i.trainingType.equals(training_type))
+                .collect(Collectors.toList());
     }
 }
