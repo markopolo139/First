@@ -65,8 +65,11 @@ public class CallController {
             @RequestParam(value = "details", required = false) String details,
             @RequestParam(value = "callType", required = false) @ValidCallTypeWithNull String callType
     ) {
+
+        CallType ct = callType == null ? null : CallType.valueOf(callType);
+
         return mCallInteractor.findFiltered(
-            startDateStart,startDateEnd,endDateStart,endDateEnd,location,details, CallType.valueOf(callType)
+            startDateStart,startDateEnd,endDateStart,endDateEnd,location,details, ct
         );
     }
 }

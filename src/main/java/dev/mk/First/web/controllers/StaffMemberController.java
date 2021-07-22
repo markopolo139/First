@@ -74,10 +74,13 @@ public class StaffMemberController {
             @RequestParam(value = "email", required = false) String email,
             @RequestParam(value = "phoneNumber", required = false) String phoneNumber
     ) {
+
+        BloodType bt = bloodType == null ? null : BloodType.valueOf(bloodType);
+
         return mStaffMemberInteractor.findFiltered(
                 firstname, lastname, joiningTimeStart, joiningTimeEnd, pesel, address, city,
                 periodicExaminationsExpiryDateStart, periodicExaminationsExpiryDateEnd, isDriver,
-                birthdateStart, birthdateEnd, BloodType.valueOf(bloodType), email, phoneNumber
+                birthdateStart, birthdateEnd, bt , email, phoneNumber
         );
     }
 }
