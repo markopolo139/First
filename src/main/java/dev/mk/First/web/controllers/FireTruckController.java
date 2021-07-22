@@ -17,7 +17,7 @@ public class FireTruckController {
     private FireTruckInteractor mFireTruckInteractor;
 
     @GetMapping(path = "/api/v1/fireTruck/get")
-    public Collection<FireTruckEntity> getFireTruck() {
+    public Collection<FireTruckModel> getFireTruck() {
         return mFireTruckInteractor.findAll();
     }
 

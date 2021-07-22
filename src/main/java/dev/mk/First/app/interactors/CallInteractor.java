@@ -18,8 +18,8 @@ public class CallInteractor {
     @Autowired
     private CallConverter mCallsConverter;
 
-    public Collection<CallEntity> findAll() {
-        return (Collection<CallEntity>) mCallRepository.findAll();
+    public Collection<CallModel> findAll() {
+        return mCallsConverter.convertCollectionToModel((Collection < CallEntity >) mCallRepository.findAll());
     }
 
     public void saveEntity(CallModel callModel) {

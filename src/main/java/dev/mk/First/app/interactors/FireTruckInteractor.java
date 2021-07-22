@@ -18,8 +18,9 @@ public class FireTruckInteractor {
     @Autowired
     private FireTruckConverter mFireTruckConverter;
 
-    public Collection<FireTruckEntity> findAll() {
-        return (Collection<FireTruckEntity>) mFireTruckRepository.findAll();
+    public Collection<FireTruckModel> findAll() {
+        return mFireTruckConverter
+                .convertCollectionToModel((Collection < FireTruckEntity >) mFireTruckRepository.findAll());
     }
 
     public void saveEntity(FireTruckModel fireTruckModel) {

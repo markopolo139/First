@@ -20,7 +20,7 @@ public class CallController {
     private CallInteractor mCallInteractor;
 
     @GetMapping(path = "/api/v1/call/get")
-    public Collection<CallEntity> getCall() {
+    public Collection<CallModel> getCall() {
         return mCallInteractor.findAll();
     }
 

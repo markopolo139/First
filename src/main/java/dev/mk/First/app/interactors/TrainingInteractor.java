@@ -20,8 +20,8 @@ public class TrainingInteractor {
     @Autowired
     private TrainingConverter mTrainingConverter;
 
-    public Collection<TrainingEntity> findAll() {
-        return (Collection<TrainingEntity>) mTrainingRepository.findAll();
+    public Collection<TrainingModel> findAll() {
+        return mTrainingConverter.covertCollectionToModel((Collection<TrainingEntity>) mTrainingRepository.findAll());
     }
 
     public void saveEntity(TrainingModel trainingModel) {

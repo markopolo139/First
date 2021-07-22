@@ -17,7 +17,7 @@ public class EquipmentController {
     private EquipmentInteractor mEquipmentInteractor;
 
     @GetMapping(path = "/api/v1/equipment/get")
-    public Collection<EquipmentEntity> getEquipment() {
+    public Collection<EquipmentModel> getEquipment() {
         return mEquipmentInteractor.findAll();
     }
 

@@ -20,7 +20,7 @@ public class TrainingController {
     private TrainingInteractor mTrainingInteractor;
 
     @GetMapping(path = "/api/v1/training/get")
-    public Collection<TrainingEntity> getTraining() {
+    public Collection<TrainingModel> getTraining() {
         return mTrainingInteractor.findAll();
     }
 

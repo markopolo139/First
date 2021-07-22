@@ -18,8 +18,9 @@ public class StaffMemberInteractor {
     @Autowired
     private StaffMemberConverter mStaffMemberConverter;
 
-    public Collection<StaffMemberEntity> findAll() {
-        return (Collection<StaffMemberEntity>) mStaffMemberRepository.findAll();
+    public Collection<StaffMemberModel> findAll() {
+        return mStaffMemberConverter
+                .convertCollectionToModel((Collection < StaffMemberEntity >) mStaffMemberRepository.findAll());
     }
 
     public void saveEntity(StaffMemberModel staffMemberModel) {

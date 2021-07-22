@@ -17,7 +17,7 @@ public class StaffMemberController {
     private StaffMemberInteractor mStaffMemberInteractor;
 
     @GetMapping(path = "/api/v1/staffMember/get")
-    public Collection<StaffMemberEntity> getStaffMember() {
+    public Collection<StaffMemberModel> getStaffMember() {
         return mStaffMemberInteractor.findAll();
     }
 

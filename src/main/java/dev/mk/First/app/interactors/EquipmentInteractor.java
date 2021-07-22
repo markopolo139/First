@@ -19,8 +19,9 @@ public class EquipmentInteractor {
     @Autowired
     private EquipmentConverter mEquipmentConverter;
 
-    public Collection<EquipmentEntity> findAll() {
-        return (Collection<EquipmentEntity>) mEquipmentRepository.findAll();
+    public Collection<EquipmentModel> findAll() {
+        return mEquipmentConverter
+                .convertCollectionToModel((Collection < EquipmentEntity >) mEquipmentRepository.findAll());
     }
 
     public void saveEntity(EquipmentModel equipmentModel) {
