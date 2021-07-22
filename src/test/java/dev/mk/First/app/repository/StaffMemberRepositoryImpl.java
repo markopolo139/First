@@ -2,8 +2,10 @@ package dev.mk.First.app.repository;
 
 import dev.mk.First.app.data.entities.StaffMemberEntity;
 import dev.mk.First.app.data.repositories.StaffMemberRepository;
+import dev.mk.First.business.value.BloodType;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -85,5 +87,33 @@ public class StaffMemberRepositoryImpl implements StaffMemberRepository {
     @Override
     public void deleteAll() {
         mStaffMemberEntities.clear();
+    }
+
+    @Override
+    public List<StaffMemberEntity> findAllByFilter(
+            String firstname, String lastname, LocalDate joiningTimeStart, LocalDate joiningTimeEnd, String pesel,
+            String address, String city, LocalDate periodicExaminationsExpiryDateStart,
+            LocalDate periodicExaminationsExpiryDateEnd, boolean isDriver, LocalDate birthdateStart,
+            LocalDate birthdateEnd, BloodType bloodType, String email, String phoneNumber
+    ) {
+        return mStaffMemberEntities.stream()
+                .filter(i -> i.firstname.equals(firstname))
+                .filter( i -> i.lastname.equals(lastname))
+                .filter(i -> !joiningTimeStart.isBefore(i.joiningDate) && !joiningTimeStart.isAfter(i.joiningDate))
+                .filter(i -> !joiningTimeEnd.isBefore(i.joiningDate) && !joiningTimeEnd.isAfter(i.joiningDate))
+                .filter(i -> i.pesel.equals(pesel))
+                .filter(i -> i.address.equals(address))
+                .filter(i -> i.city.equals(city))
+                .filter(i -> !periodicExaminationsExpiryDateStart.isBefore(i.periodicExaminationsExpiryDate)
+                        && !periodicExaminationsExpiryDateStart.isAfter(i.periodicExaminationsExpiryDate))
+                .filter(i -> !periodicExaminationsExpiryDateEnd.isBefore(i.periodicExaminationsExpiryDate)
+                        && !periodicExaminationsExpiryDateEnd.isAfter(i.periodicExaminationsExpiryDate))
+                .filter(i -> i.isDriver == isDriver)
+                .filter(i -> !birthdateStart.isBefore(i.birthdate) && !birthdateStart.isAfter(i.birthdate))
+                .filter(i -> !birthdateEnd.isBefore(i.birthdate) && !birthdateEnd.isAfter(i.birthdate))
+                .filter(i -> i.bloodType.equals(bloodType))
+                .filter(i -> i.email.equals(email))
+                .filter(i -> i.phoneNumber.equals(phoneNumber))
+                .collect(Collectors.toList());
     }
 }
