@@ -15,7 +15,7 @@ import java.util.List;
 public interface TrainingRepository extends CrudRepository<TrainingEntity, Integer> {
 
     @Query(
-            "select te from TrainingEntity te" +
+            "select te from TrainingEntity te " +
                     "where (:trainingDateStart is null or te.trainingDate >= :trainingDateStart)" +
                     "and (:trainingDateEnd is null or te.trainingDate <= :trainingDateEnd)" +
                     "and (:expirationDateStart is null or te.expirationDate >= :expirationDateStart)" +
