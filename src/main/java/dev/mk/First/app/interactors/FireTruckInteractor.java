@@ -5,6 +5,7 @@ import dev.mk.First.app.data.entities.FireTruckEntity;
 import dev.mk.First.app.data.repositories.FireTruckRepository;
 import dev.mk.First.web.models.FireTruckModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -42,5 +43,26 @@ public class FireTruckInteractor {
         updatedEntity.fireTruckId = id;
         mFireTruckRepository.save(updatedEntity);
 
+    }
+
+    public Collection<FireTruckModel> findFiltered(
+            @Nullable String name,
+            @Nullable Double priceStart,
+            @Nullable Double priceEnd,
+            @Nullable String vin,
+            @Nullable Integer productionYearStart,
+            @Nullable Integer productionYearEnd,
+            @Nullable String operationalNumbers,
+            @Nullable String type,
+            @Nullable Integer horsepowerStart,
+            @Nullable Integer horsepowerEnd,
+            @Nullable Integer numberOfSeatsStart,
+            @Nullable Integer numberOfSeatsEnd,
+            @Nullable Integer mileageStart,
+            @Nullable Integer mileageEnd
+    ) {
+        return mFireTruckConverter.convertCollectionToModel(mFireTruckRepository.findAllByFilter(name, priceStart,
+                priceEnd, vin, productionYearStart, productionYearEnd, operationalNumbers, type, horsepowerStart,
+                horsepowerEnd, numberOfSeatsStart, numberOfSeatsEnd, mileageStart, mileageEnd));
     }
 }

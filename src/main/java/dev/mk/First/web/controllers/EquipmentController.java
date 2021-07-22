@@ -40,6 +40,16 @@ public class EquipmentController {
 
     @PatchMapping(path = "/api/v1/equipment/update")
     public void updateEquipment(Integer id, @Valid @RequestBody EquipmentModel updatedEquipment) {
-        mEquipmentInteractor.updateEntity(id,updatedEquipment);
+        mEquipmentInteractor.updateEntity(id, updatedEquipment);
+    }
+
+    @GetMapping(path = "api/v1/equipment/filter")
+    public Collection<EquipmentModel> getFilteredEquipment(
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "priceStart", required = false) Double priceStart,
+            @RequestParam(value = "priceEnd", required = false) Double priceEnd,
+            @RequestParam(value = "serialNumber", required = false) String serialNumber
+    ) {
+        return mEquipmentInteractor.findFiltered(name, priceStart, priceEnd, serialNumber);
     }
 }

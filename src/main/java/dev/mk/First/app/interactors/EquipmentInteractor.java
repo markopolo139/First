@@ -5,10 +5,13 @@ import dev.mk.First.app.data.entities.EquipmentEntity;
 import dev.mk.First.app.data.repositories.EquipmentRepository;
 import dev.mk.First.web.models.EquipmentModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.parser.Entity;
+import javax.validation.constraints.Null;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class EquipmentInteractor {
@@ -43,5 +46,15 @@ public class EquipmentInteractor {
         updatedEntity.equipmentId = id;
         mEquipmentRepository.save(updatedEntity);
 
+    }
+
+    public Collection<EquipmentModel> findFiltered(
+            @Nullable String name,
+            @Nullable Double priceStart,
+            @Nullable Double priceEnd,
+            @Nullable String serialNumber
+    ) {
+        return mEquipmentConverter.convertCollectionToModel(mEquipmentRepository.findAllByFilter(name, priceStart,
+                priceEnd, serialNumber));
     }
 }
