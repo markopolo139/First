@@ -16,15 +16,15 @@ public interface TrainingRepository extends CrudRepository<TrainingEntity, Integ
 
     @Query(
             "select te from TrainingEntity te" +
-                    "where (:training_dateStart is null or te.trainingDate >= :training_dateStart)" +
-                    "and (:training_dateEnd is null or te.trainingDate <= :training_dateEnd)" +
-                    "and (:expiration_dateStart is null or te.expirationDate >= :expiration_dateStart)" +
-                    "and (:expiration_dateEnd is null or te.expirationDate <= :expiration_dateEnd)" +
-                    "and (:training_type is null or te.trainingType = :training_type)"
+                    "where (:trainingDateStart is null or te.trainingDate >= :trainingDateStart)" +
+                    "and (:trainingDateEnd is null or te.trainingDate <= :trainingDateEnd)" +
+                    "and (:expirationDateStart is null or te.expirationDate >= :expirationDateStart)" +
+                    "and (:expirationDateEnd is null or te.expirationDate <= :expirationDateEnd)" +
+                    "and (:trainingType is null or te.trainingType = :trainingType)"
     )
-    List<TrainingEntity> findAllByFilter(@Param("training_dateStart") LocalDate training_dateStart,
-                                         @Param("training_dateEnd") LocalDate training_dateEnd,
-                                         @Param("expiration_dateStart") LocalDate expiration_dateStart,
-                                         @Param("expiration_dateEnd") LocalDate expiration_dateEnd,
-                                         @Param("training_type") TrainingType training_type);
+    List<TrainingEntity> findAllByFilter(@Param("trainingDateStart") LocalDate trainingDateStart,
+                                         @Param("trainingDateEnd") LocalDate trainingDateEnd,
+                                         @Param("expirationDateStart") LocalDate expirationDateStart,
+                                         @Param("expirationDateEnd") LocalDate expirationDateEnd,
+                                         @Param("trainingType") TrainingType trainingType);
 }

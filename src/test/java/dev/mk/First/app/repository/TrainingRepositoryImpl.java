@@ -88,16 +88,16 @@ public class TrainingRepositoryImpl implements TrainingRepository {
     }
 
     @Override
-    public List<TrainingEntity> findAllByFilter(LocalDate training_dateStart, LocalDate training_dateEnd,
-                                                LocalDate expiration_dateStart, LocalDate expiration_dateEnd,
-                                                TrainingType training_type)
+    public List<TrainingEntity> findAllByFilter(LocalDate trainingDateStart, LocalDate trainingDateEnd,
+                                                LocalDate expirationDateStart, LocalDate expirationDateEnd,
+                                                TrainingType trainingType)
     {
         return mTrainingEntities.stream()
-                .filter(i -> i.trainingDate.isAfter(training_dateStart)
-                        && i.trainingDate.isBefore(training_dateEnd))
-                .filter(i -> i.expirationDate.isAfter(expiration_dateStart)
-                        && i.expirationDate.isBefore(expiration_dateEnd))
-                .filter(i -> i.trainingType.equals(training_type))
+                .filter(i -> i.trainingDate.isAfter(trainingDateStart)
+                        && i.trainingDate.isBefore(trainingDateEnd))
+                .filter(i -> i.expirationDate.isAfter(expirationDateStart)
+                        && i.expirationDate.isBefore(expirationDateEnd))
+                .filter(i -> i.trainingType.equals(trainingType))
                 .collect(Collectors.toList());
     }
 }

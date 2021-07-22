@@ -86,11 +86,11 @@ public class EquipmentRepositoryImpl implements EquipmentRepository {
     }
 
     @Override
-    public List<EquipmentEntity> findAllByFilter(String name, Double priceStart, Double priceEnd, String serial_number) {
+    public List<EquipmentEntity> findAllByFilter(String name, Double priceStart, Double priceEnd, String serialNumber) {
         return mEquipmentEntities.stream()
                 .filter(i -> i.name.equals(name))
                 .filter(i -> i.price >= priceStart && i.price <= priceEnd)
-                .filter(i -> i.serialNumber.equals(serial_number))
+                .filter(i -> i.serialNumber.equals(serialNumber))
                 .collect(Collectors.toList());
     }
 }

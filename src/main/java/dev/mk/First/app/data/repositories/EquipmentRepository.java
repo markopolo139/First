@@ -17,10 +17,10 @@ public interface EquipmentRepository extends CrudRepository<EquipmentEntity, Int
                     "where (:name is null or ee.name = :name) " +
                     "and (:priceStart is null or ee.price >= :priceStart)" +
                     "and (:priceEnd is null or ee.price <= :priceEnd)" +
-                    "and (:serial_number is null or ee.serialNumber = :serial_number)"
+                    "and (:serialNumber is null or ee.serialNumber = :serialNumber)"
     )
     List<EquipmentEntity> findAllByFilter(@Param("name") String name,
                                           @Param("priceStart") Double priceStart,
                                           @Param("priceEnd") Double priceEnd,
-                                          @Param("serial_number") String serial_number);
+                                          @Param("serialNumber") String serialNumber);
 }

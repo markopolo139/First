@@ -87,20 +87,20 @@ public class FireTruckRepositoryImpl implements FireTruckRepository {
 
     @Override
     public List<FireTruckEntity> findAllByFilter(String name, Double priceStart, Double priceEnd, String vin,
-                                                 Integer production_yearStart, Integer production_yearEnd,
-                                                 String operational_numbers, String type, Integer horsepowerStart,
-                                                 Integer horsepowerEnd, Integer number_of_seatsStart,
-                                                 Integer number_of_seatsEnd, Integer mileageStart, Integer mileageEnd)
+                                                 Integer productionYearStart, Integer productionYearEnd,
+                                                 String operationalNumbers, String type, Integer horsepowerStart,
+                                                 Integer horsepowerEnd, Integer numberOfSeatsStart,
+                                                 Integer numberOfSeatsEnd, Integer mileageStart, Integer mileageEnd)
     {
         return mFireTruckEntities.stream()
                 .filter(i -> i.name.equals(name))
                 .filter(i -> i.price >= priceStart && i.price <= priceEnd)
                 .filter(i -> i.vin.equals(vin))
-                .filter(i -> i.productionYear >= production_yearStart && i.productionYear <= production_yearEnd)
-                .filter(i -> i.operationalNumbers.equals(operational_numbers))
+                .filter(i -> i.productionYear >= productionYearStart && i.productionYear <= productionYearEnd)
+                .filter(i -> i.operationalNumbers.equals(operationalNumbers))
                 .filter(i -> i.type.equals(type))
                 .filter(i -> i.horsepower >= horsepowerStart && i.horsepower <= horsepowerEnd)
-                .filter(i -> i.numberOfSeats >= number_of_seatsStart && i.numberOfSeats <= number_of_seatsEnd)
+                .filter(i -> i.numberOfSeats >= numberOfSeatsStart && i.numberOfSeats <= numberOfSeatsEnd)
                 .filter(i -> i.mileage >= mileageStart && i.mileage <= mileageEnd)
                 .collect(Collectors.toList());
     }

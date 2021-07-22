@@ -18,14 +18,14 @@ public interface FireTruckRepository extends CrudRepository<FireTruckEntity, Int
                     "and (:priceStart is null or fte.price >= :priceStart)" +
                     "and (:priceEnd is null or fte.price <= :priceEnd)" +
                     "and (:vin is null or fte.vin = :vin)" +
-                    "and (:production_yearStart is null or fte.productionYear >= :production_yearStart)" +
-                    "and (:production_yearEnd is null or fte.productionYear <= :production_yearEnd)" +
-                    "and (:operational_numbers is null or fte.operationalNumbers = :operational_numbers)" +
+                    "and (:productionYearStart is null or fte.productionYear >= :productionYearStart)" +
+                    "and (:productionYearEnd is null or fte.productionYear <= :productionYearEnd)" +
+                    "and (:operationalNumbers is null or fte.operationalNumbers = :operationalNumbers)" +
                     "and (:type is null or fte.type = :type)" +
                     "and (:horsepowerStart is null or fte.horsepower >= :horsepowerStart)" +
                     "and (:horsepowerEnd is null or fte.horsepower <= :horsepowerEnd)" +
-                    "and (:number_of_seatsStart is null or fte.numberOfSeats >= :number_of_seatsStart)" +
-                    "and (:number_of_seatsEnd is null or fte.numberOfSeats <= :number_of_seatsEnd)" +
+                    "and (:numberOfSeatsStart is null or fte.numberOfSeats >= :numberOfSeatsStart)" +
+                    "and (:numberOfSeatsEnd is null or fte.numberOfSeats <= :numberOfSeatsEnd)" +
                     "and (:mileageStart is null or fte.mileage >= :mileageStart)" +
                     "and (:mileageEnd is null or fte.mileage <= :mileageEnd)"
     )
@@ -33,14 +33,14 @@ public interface FireTruckRepository extends CrudRepository<FireTruckEntity, Int
                                           @Param("priceStart") Double priceStart,
                                           @Param("priceEnd") Double priceEnd,
                                           @Param("vin") String vin,
-                                          @Param("production_yearStart") Integer production_yearStart,
-                                          @Param("production_yearEnd") Integer production_yearEnd,
-                                          @Param("operational_numbers") String operational_numbers,
+                                          @Param("productionYearStart") Integer productionYearStart,
+                                          @Param("productionYearEnd") Integer productionYearEnd,
+                                          @Param("operationalNumbers") String operationalNumbers,
                                           @Param("type") String type,
                                           @Param("horsepowerStart") Integer horsepowerStart,
                                           @Param("horsepowerEnd") Integer horsepowerEnd,
-                                          @Param("number_of_seatsStart") Integer number_of_seatsStart,
-                                          @Param("number_of_seatsEnd") Integer number_of_seatsEnd,
+                                          @Param("numberOfSeatsStart") Integer numberOfSeatsStart,
+                                          @Param("numberOfSeatsEnd") Integer numberOfSeatsEnd,
                                           @Param("mileageStart") Integer mileageStart,
                                           @Param("mileageEnd") Integer mileageEnd);
 }
