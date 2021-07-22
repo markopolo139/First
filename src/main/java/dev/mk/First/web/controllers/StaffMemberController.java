@@ -51,7 +51,7 @@ public class StaffMemberController {
     }
 
     @GetMapping(path = "/api/v1/staffMember/filter")
-    public Collection<StaffMemberModel> getFilteredCalls(
+    public Collection<StaffMemberModel> getFilteredStaffMembers(
             @RequestParam(value = "firstname", required = false) String firstname,
             @RequestParam(value = "lastname", required = false) String lastname,
             @RequestParam(value = "joiningTimeStart", required = false)
