@@ -9,9 +9,9 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.PARAMETER, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = ValidCallTypeWithNullImpl.class)
-public @interface ValidCallTypeWithNull {
-    String message() default "Invalid Call type";
+@Constraint(validatedBy = ValidBloodTypeWithNullImpl.class)
+public @interface ValidBloodTypeWithNull {
+    String message() default "Invalid Blood Type";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
