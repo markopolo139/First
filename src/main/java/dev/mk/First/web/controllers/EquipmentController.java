@@ -4,11 +4,13 @@ import dev.mk.First.app.data.entities.EquipmentEntity;
 import dev.mk.First.app.interactors.EquipmentInteractor;
 import dev.mk.First.web.models.EquipmentModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Collection;
 
+@Validated
 @RestController
 @CrossOrigin
 public class EquipmentController {

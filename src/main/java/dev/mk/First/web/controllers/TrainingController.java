@@ -7,11 +7,13 @@ import dev.mk.First.app.interactors.TrainingInteractor;
 import dev.mk.First.web.models.StaffMemberModel;
 import dev.mk.First.web.models.TrainingModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Collection;
 
+@Validated
 @CrossOrigin
 @RestController
 public class TrainingController {
