@@ -18,9 +18,9 @@ public class ThyMeLeafConfiguration {
     public ITemplateResolver getTemplateResolver() {
         ClassLoaderTemplateResolver classLoaderTemplateResolver = new ClassLoaderTemplateResolver();
         classLoaderTemplateResolver.setTemplateMode(TemplateMode.HTML);
-//        classLoaderTemplateResolver.setPrefix("/templates/");
-//        classLoaderTemplateResolver.setSuffix(".html");
-//        classLoaderTemplateResolver.setCharacterEncoding("UTF-8");
+        classLoaderTemplateResolver.setPrefix("/templates/");
+        classLoaderTemplateResolver.setSuffix(".html");
+        classLoaderTemplateResolver.setCharacterEncoding("UTF-8");
         return classLoaderTemplateResolver;
     }
 
